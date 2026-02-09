@@ -1,3 +1,0 @@
-hello , this is ankit and i am learning git and github ,for tutorial i am creating this file 
-i am making some changes in the file 
-and blah blah 
