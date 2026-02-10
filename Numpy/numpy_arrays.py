@@ -154,7 +154,7 @@ print(np.std(o,axis=1)) # this will return the standard deviation of each row of
 
 print(np.var(o)) # this will return the variance of all the elements in the array o
 print(np.var(o,axis=0)) # this will return the variance of each column of the array o
-print(np.var(o,axis=1)) # this will return the variance of each row of the array o
+print(np.var(o,axis=1)) # this will return the variance of each row of the array 
 
 
 
@@ -222,3 +222,99 @@ print(np.vstack((x,y))) # this will return the vertical stacking of the arrays x
 z=np.arange(1,10).reshape(3,3) # this will create a 2D array with 3 rows and 3 columns from the array of numbers from 1 to 9
 print(np.hsplit(z,3)) # this will return the horizontal splitting of the array z        
 print(np.vsplit(z,3)) # this will return the vertical splitting of the array z
+
+
+
+
+
+
+# python list vs numpy array  in time
+
+
+# python list 
+
+import time
+start=time.time()
+a=[i for i in range(1000000)] # this will create a list of numbers from 0 to 999999
+b=[i for i in range(1000000)] # this will create a list of numbers from 0 to 999999
+c=[]
+for i in range(len(a)):
+    c.append(a[i]+b[i]) # this will add the corresponding elements of the lists a and b and append the result to the list c
+    print(time.time()-start) # this will print the time taken to add the corresponding elements of the lists a and b and append the result to the list c
+  
+
+# numpy array
+start=time.time()
+a=np.arange(1000000) # this will create a numpy array of numbers from 0 to 999999
+b=np.arange(1000000) # this will create a numpy array of numbers from   
+c=a+b # this will add the corresponding elements of the arrays a and b and store the result in the array c
+print(time.time()-start) # this will print the time taken to add the corresponding elements of the arrays a and b and store the result in the array c   
+ 
+
+#python list vs numpy array in memory
+
+# python list
+
+import sys
+a=[i for i in range(1000000)] # this will create a list of numbers from 0 to 999999
+print(sys.getsizeof(a)) # this will print the memory size of the list a in bytes
+
+# numpy array
+
+a=np.arange(1000000) # this will create a numpy array of numbers from 0 to 999999
+print(sys.getsizeof(a)) # this will print the memory size of the numpy array a in bytes
+
+
+
+
+
+# fancy indexing of arrays
+a=np.arange(1,10).reshape(3,3) # this will create a 2D array with 3 rows and 3 columns from the array of numbers from 1 to 9
+print(a[[0,1],[0,1]]) # this will return the elements at the first row and first column, and the second row and second column of the array a    
+
+
+
+# broadcasting of arrays
+a=np.arange(1,10).reshape(3,3) # this will create a 2D array with 3 rows and 3 columns from the array of numbers from 1 to 9
+b=np.array([1,2,3]) # this will create a 1D array with 3 elements
+print(a+b) # this will add the array b to each row of the array a using
+
+x=np.arange(1,10).reshape(3,3) # this will create a 2D array with 3 rows and 3 columns from the array of numbers from 1 to 9
+y=np.arange(3)
+print(x+y) # this will add the array y to each column of the array x using broadcasting
+ 
+ # below code  generates an error because the shapes of the arrays are not compatible for broadcasting
+z=np.arange(1,10).reshape(3,3) # this will create a 2D array with 3 rows and 3 columns from the array of numbers from 1 to 9
+w=np.arange(4) # this will create a 1D array with 4 elements                
+print(z+w) # this will generate an error because the shapes of the arrays z and w are not compatible for broadcasting
+
+
+
+
+# sigmoid function
+# s(x)= 1/(1+exp(-x))
+def sigmoid(x):
+    return 1/(1+np.exp(-x)) # this will return the sigmoid of each element in the array x
+a=np.arange(-10,11) # this will create a 1D array of numbers from -10 to 10
+print(sigmoid(a)) # this will return the sigmoid of each element in the array a 
+
+
+
+#mean squared error function
+# MSE= (1/n)*sum((y_prediction-y_true)^2)
+def mse(y_prediction,y_true):
+    return np.mean((y_prediction-y_true)**2) # this will return the mean squared error between the arrays y_prediction and y_true   
+y_true=np.array([1,2,3]) # this will create a 1D array with 3 elements
+y_prediction=np.array([1.5,2.5,3.5]) # this will create a 1D array with 3 elements
+print(mse(y_prediction,y_true)) # this will return the mean squared error between the arrays y_prediction and y_true
+
+
+
+# binary cross entropy function
+# BCE= -(1/n)*sum(y_true*log(y_prediction)+(1-y_true)*log(1-y_prediction))
+def bce(y_prediction,y_true):       
+    return -np.mean(y_true*np.log(y_prediction)+(1-y_true)*np.log(1-y_prediction)) # this will return the binary cross entropy between the arrays y_prediction and y_true
+y_true=np.array([1,0,1]) # this will create a 1D array with 3 elements
+y_prediction=np.array([0.9,0.1,0.8]) # this will create a 1D array with 3 elements  
+print(bce(y_prediction,y_true)) # this will return the binary cross entropy between the arrays y_prediction and y_true
+     
