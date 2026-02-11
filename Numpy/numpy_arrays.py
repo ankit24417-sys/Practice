@@ -310,6 +310,7 @@ print(mse(y_prediction,y_true)) # this will return the mean squared error betwee
 
 
 
+
 # binary cross entropy function
 # BCE= -(1/n)*sum(y_true*log(y_prediction)+(1-y_true)*log(1-y_prediction))
 def bce(y_prediction,y_true):       
@@ -318,3 +319,168 @@ y_true=np.array([1,0,1]) # this will create a 1D array with 3 elements
 y_prediction=np.array([0.9,0.1,0.8]) # this will create a 1D array with 3 elements  
 print(bce(y_prediction,y_true)) # this will return the binary cross entropy between the arrays y_prediction and y_true
      
+
+
+
+
+# important numpy functions
+ 
+
+ # this is for np.sort() function.
+a=np.arange(1000).reshape(10,100) # this will create a 2D array with 10 rows and 100 columns from the array of numbers from 0 to 999
+print(np.sort(a,axis=0)) # this will return the sorted array a along the columns
+print(np.sort(a,axis=1)) # this will return the sorted array a along the rows   
+
+# for reverse sorting
+print(np.sort(a,axis=0)[::-1]) # this will return the sorted array
+
+
+# this is for np.append() function.
+a=np.arange(1,10).reshape(3,3) # this will create a 2D array with 3 rows and 3 columns from the array of numbers from 1 to 9
+b=np.array([[10,11,12]]) # this will create a 2D array  with 1 row and 3 columns
+print(np.append(a,b,axis=0)) # this will append the array b to the array a along the rows
+print(np.append(a,b,axis=1)) # this will append the array b to the array a along the columns    
+
+
+# this is for np.concatenate() function.
+a=np.arange(1,10).reshape(3,3) # this will create a 2D array with 3 rows and 3 columns from the array of numbers from 1 to 9                                
+b=np.array([[10,11,12]]) # this will create a 2D array  with 1 row and 3 columns
+print(np.concatenate((a,b),axis=0)) # this will concatenate the arrays a and b along the rows
+print(np.concatenate((a,b.T),axis=1)) # this will concatenate the arrays a  and b along the columns     
+
+
+
+ # this is for np.unique() function.
+a=np.array([1,2,3,4,5,5,6,7,8,9]) # this will create a 1D array with 10 elements    
+b=np.unique(a) # this will return the unique elements of the array a and store it in the array b    
+print(b) # this will print the unique elements of the array a stored in the array b 
+
+
+
+# this is for expand_dims() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements       
+print(np.expand_dims(a,axis=0)) # this will return the array a with an added dimension at the first axis
+print(np.expand_dims(a,axis=1)) # this will return the array a with an  added dimension at the second axis
+        
+
+# this is for np.where() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+print(np.where(a>3)) # this will return the indices of the elements in the array a that are greater than 3
+print(np.where(a>3,1,0)) # this will return an array where the  elements in the array a that are greater than 3 are replaced with 1 and the elements that are less than or equal to 3 are replaced with 0   
+
+
+# this is for np.argmax() function. 
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+print(np.argmax(a)) # this will return the index of the maximum element in the array a  
+
+
+# this is for np.argmin() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+print(np.argmin(a)) # this will return the index of the minimum element in the array a  
+
+
+# this is for np.cumsum() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+print(np.cumsum(a)) # this will return the cumulative sum of the elements in the array a
+# output will be [1,3,6,10,15] because 1 is the first element, 1+2=3 is the second element, 1+2+3=6 is the third element, 1+2+3+4=10 is the fourth element and 1+2+3+4+5=15 is the fifth element of the output array.       
+
+
+# this is for cumprod() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+print(np.cumprod(a)) # this will return the cumulative product of the elements in the array a
+# output will be [1,2,6,24,120] because 1 is    the first element, 1*2=2 is the second element, 1*2*3=6 is the third element, 1*2*3*4=24 is the fourth element and 1*2*3*4*5=120 is the fifth element of the output array.  
+
+
+# this is for np.percentile() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+print(np.percentile(a,50)) # this will return the 50th percentile (median) of the elements in the array a
+print(np.percentile(a,25)) # this will return the 25th percentile of the elements in the array a
+print(np.percentile(a,75)) # this will return the 75th percentile of the    elements in the array a     
+# output will be 3.0 for the 50th percentile, 2.0 for the 25th percentile and 4.0 for the 75th percentile because 3 is the middle element of the sorted array [1,2,3,4,5], 2 is the middle element of the lower half of the sorted array [1,2] and 4 is the middle element of the upper half of the sorted array [4,5].         
+
+
+# this is for np.histogram() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+print(np.histogram(a,bins=5)) # this will return the histogram of the elements in the array a with 5 bins
+# output will be (array([1,1,1,1,1]), array([   1., 2., 3., 4., 5., 6.])) because there is one element in the array a that falls into each of the 5 bins defined by the edges [1., 2., 3., 4., 5., 6.]. The first bin includes the elements that are greater than or equal to 1 and less than 2, the second bin includes the elements that are greater than or equal to 2 and less than 3, the third bin includes the elements that are greater than or equal to 3 and less than 4, the fourth bin includes the elements that are greater than or equal to 4 and less than 5, and the fifth bin includes the elements that are greater than or equal to 5 and less than 6.      
+
+
+# this is for np.corrcoef() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+b=np.array([2,3,4,5,6]) # this will create a 1D array with 5 elements
+print(np.corrcoef(a,b)) # this will return the correlation coefficient matrix of the arrays a and b
+# output will be [[1. 1.] [1. 1.]] because the correlation coefficient between the arrays a and b is 1, which indicates a perfect positive linear relationship between the two arrays. The diagonal elements of the matrix are 1 because they represent the correlation of each array with itself, which is always 1. The off-diagonal elements are also 1 because they represent the correlation between the two different arrays, which is also 1 in this case.       
+
+
+# this is for np.isin() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+b=np.array([3,4,5,6,7]) # this will create a 1D array with 5 elements
+print(np.isin(a,b)) # this will return a boolean array where each element is True if the corresponding element in the array a is present in the array b and False otherwise
+# output will be [False False  True  True  True] because the elements 3, 4, and 5 in the array a are present in the array b, while the elements 1 and 2 in the array a are not present in the array b.          
+
+
+# this is for np.flip() function.
+a=np.array([[1,2,3],[4,5,6],[7,8,9]]) # this will create a 2D array with 3 rows and 3 columns from the array of numbers from 1 to 9
+print(np.flip(a,axis=0)) # this will return the array a flipped along the first axis (rows)         
+print(np.flip(a,axis=1)) # this will return the array a flipped along the second axis (columns)
+# output will be [[7 8 9] [4 5 6] [1 2 3]] for the first print statement because the rows of the array a are reversed, and [[3 2 1] [6 5 4] [9 8 7]] for the second print statement because the columns of the array a are reversed.        
+
+
+# this is for np.put() function.
+a=np.array([1,2,3,4,5]) # this will create a    1D array with 5 elements
+np.put(a,[0,2],[10,30]) # this will replace the elements at the indices 0 and 2 of the array a with the values 10 and 30 respectively
+print(a) # this will print the modified array a, which will be [10, 2, 30, 4, 5] because the element at index 0 has been replaced with 10 and the element at index 2 has been replaced with 30. 
+
+
+# this is for np.delete() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+print(np.delete(a,0)) # this will return a new array with the element at index 0 of the array a deleted
+print(np.delete(a,2)) # this will return a new array with the element at index 2 of the array a deleted
+# output will be [2 3 4 5] for the first print statement because the element at index 0 (which is 1) has been deleted, and [1 2 4 5] for the second print statement because the element at index 2 (which is 3) has been deleted.   
+
+
+
+
+
+
+
+# set functions for arrays
+
+# this is for np.union1d() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+b=np.array([4,5,6,7,8]) # this will create a 1D array with 5 elements
+print(np.union1d(a,b)) # this will return the sorted unique elements that are in either of the arrays a or b
+# output will be [1 2 3 4 5 6 7 8] because the unique elements that are in either of the arrays a or b are 1, 2, 3, 4, 5, 6, 7, and 8.  
+
+# this is for np.intersect1d() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+b=np.array([4,5,6,7,8]) # this will create a 1D array with 5 elements
+print(np.intersect1d(a,b)) # this will return the sorted unique elements that are in both of the arrays a and b
+# output will be [4 5] because the unique elements that are in both of the arrays a and b are 4 and 5.  
+ 
+ # this is for np.setdiff1d() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+b=np.array([4,5,6,7,8]) # this will create a 1D array with 5 elements
+print(np.setdiff1d(a,b)) # this will return the sorted unique elements that are in the array a but not in the array b
+# output will be [1 2 3] because the unique elements that are in the array a but not in the array b are 1, 2, and 3.    
+ 
+ # this is for np.setxor1d() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+b=np.array([4,5,6,7,8]) # this will create a    1D array with 5 elements
+print(np.setxor1d(a,b)) # this will return the sorted unique elements that are in either of the arrays a or b but not in both
+# output will be [1 2 3 6 7 8] because the unique elements that are in either of the arrays a or b but not in both are 1, 2, 3, 6, 7, and 8.    
+
+# this is for np.in1d() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+b=np.array([4,5,6,7,8]) # this will create a 1D array with 5 elements
+print(np.in1d(a,b)) # this will return a boolean array where each element is True if the corresponding element in the array a is present in the array b and False otherwise
+# output will be [False False False  True  True] because the elements 4 and 5 in the array a are present in the array b, while the elements 1, 2, and 3 in the array a are not present in the array b.
+
+
+
+
+
+# this is for np.clip() function.
+a=np.array([1,2,3,4,5]) # this will create a 1D array with 5 elements
+print(np.clip(a,2,4)) # this will return an array where the elements in the array a that are less than 2 are replaced with 2, the elements that are greater than 4 are replaced with 4, and the elements that are between 2 and 4 (inclusive) are unchanged
+# output will be [2 2 3 4 4] because the elements 1 and 2 in the array a are less than 2, so they are replaced with 2, the element 3 is between 2 and 4, so it is unchanged, and the elements 4 and 5 in the array a are greater than 4, so they are replaced with 4.   
